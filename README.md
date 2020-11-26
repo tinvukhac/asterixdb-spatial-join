@@ -41,6 +41,9 @@ CREATE DATASET LakeSet (LakeType) primary key id;
 LOAD DATASET LakeSet USING localfs (("path"="127.0.0.1:///home/tinvukhac/Documents/source_code/cartilage/spatialdatagenerators/output/lake.adm"),("format"="adm"));
 ```  
 
+* Note: if ParkSet and LakeSet are loaded from [park_small.adm](park_small.adm) and [lake_small.adm](lake_small.adm), we expected 1 join output but got 0.
+If ParkSet and LakeSet are loaded from [park.adm](park.adm) and [lake.adm](lake.adm), we expected 34 join pairs but got 7.  
+
 ### Run the spatial join query
 ```sql92
 USE test;
