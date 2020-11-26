@@ -9,9 +9,9 @@ Please download the path [here](add_rewritten_rule_for_spatial_join.patch)
 * Please make sure that you have a running instance of AsterixDB
 * First, download the following ADM files as the input datasets for our tests:
 [park_small.adm](park_small.adm), 
-[lake_small.adm](lake_small.adm)
-[park.adm](park.adm)
-[lake.adm](lake.adm) 
+[lake_small.adm](lake_small.adm),
+[park.adm](park.adm),
+[lake.adm](lake.adm)
 
 * Second, run the following query to add the input datasets (park_small, lake_small) to the dataverse. 
 You must replace the path "127.0.0.1:///home/tinvukhac/Documents/source_code/cartilage/spatialdatagenerators/output/*.adm" to the correct directory where you saved the files above.
