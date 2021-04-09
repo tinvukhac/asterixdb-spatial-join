@@ -1,0 +1,50 @@
+distribute result [$$46]
+-- DISTRIBUTE_RESULT  |UNPARTITIONED|
+  exchange
+  -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+    project ([$$46])
+    -- STREAM_PROJECT  |UNPARTITIONED|
+      assign [$$46] <- [{"$1": $$51}]
+      -- ASSIGN  |UNPARTITIONED|
+        aggregate [$$51] <- [agg-sql-sum($$52)]
+        -- AGGREGATE  |UNPARTITIONED|
+          exchange
+          -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
+            aggregate [$$52] <- [agg-sql-count(1)]
+            -- AGGREGATE  |PARTITIONED|
+              exchange
+              -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                join (spatial-intersect($$49, $$50))
+                -- NESTED_LOOP  |PARTITIONED|
+                  exchange
+                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                    project ([$$49])
+                    -- STREAM_PROJECT  |PARTITIONED|
+                      assign [$$49] <- [$$ps.getField(1)]
+                      -- ASSIGN  |PARTITIONED|
+                        project ([$$ps])
+                        -- STREAM_PROJECT  |PARTITIONED|
+                          exchange
+                          -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                            data-scan []<-[$$47, $$ps] <- test.ParkSet
+                            -- DATASOURCE_SCAN  |PARTITIONED|
+                              exchange
+                              -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                empty-tuple-source
+                                -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
+                  exchange
+                  -- BROADCAST_EXCHANGE  |PARTITIONED|
+                    project ([$$50])
+                    -- STREAM_PROJECT  |PARTITIONED|
+                      assign [$$50] <- [$$ls.getField(1)]
+                      -- ASSIGN  |PARTITIONED|
+                        project ([$$ls])
+                        -- STREAM_PROJECT  |PARTITIONED|
+                          exchange
+                          -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                            data-scan []<-[$$48, $$ls] <- test.LakeSet
+                            -- DATASOURCE_SCAN  |PARTITIONED|
+                              exchange
+                              -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                empty-tuple-source
+                                -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
