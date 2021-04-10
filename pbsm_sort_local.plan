@@ -8,217 +8,219 @@ distribute result [$$46]
       -- ASSIGN  |LOCAL|
         aggregate [$$51] <- [agg-sql-sum($$52)]
         -- AGGREGATE  |LOCAL|
-          aggregate [$$52] <- [agg-sql-count(1)]
-          -- AGGREGATE  |LOCAL|
-            select (eq($$61, reference-tile($$49, $$50, $$59, $$60, 50, 50)))
-            -- STREAM_SELECT  |LOCAL|
-              project ([$$49, $$59, $$61, $$50, $$60])
-              -- STREAM_PROJECT  |LOCAL|
-                exchange
-                -- ONE_TO_ONE_EXCHANGE  |LOCAL|
-                  join (eq($$61, $$62))
-                  -- SPATIAL_JOIN [$$61, $$49, $$59] [$$62, $$50, $$60]  |LOCAL|
-                    exchange
-                    -- ONE_TO_ONE_EXCHANGE  |LOCAL|
-                      order (ASC, $$61) (ASC, $$49)
-                      -- STABLE_SORT [$$61(ASC), $$49(ASC)]  |LOCAL|
-                        exchange
-                        -- HASH_PARTITION_EXCHANGE [$$61]  |PARTITIONED|
-                          unnest $$61 <- spatial-tile($$49, $$59, 50, 50)
-                          -- UNNEST  |PARTITIONED|
-                            assign [$$59] <- [spatial-attach($$49, "48b82feb-e933-46ab-8bd6-ba6fc5ad7666")]
-                            -- ASSIGN  |PARTITIONED|
-                              exchange
-                              -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                forward: shared-variable = $$58
-                                -- FORWARD  |PARTITIONED|
-                                  exchange
-                                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                    replicate
-                                    -- REPLICATE  |PARTITIONED|
-                                      exchange
-                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                        project ([$$49])
-                                        -- STREAM_PROJECT  |PARTITIONED|
-                                          assign [$$49] <- [$$ps.getField(1)]
-                                          -- ASSIGN  |PARTITIONED|
-                                            project ([$$ps])
-                                            -- STREAM_PROJECT  |PARTITIONED|
-                                              exchange
-                                              -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                data-scan []<-[$$47, $$ps] <- test.ParkSet
-                                                -- DATASOURCE_SCAN  |PARTITIONED|
-                                                  exchange
-                                                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                    empty-tuple-source
-                                                    -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
-                                  exchange
-                                  -- BROADCAST_EXCHANGE  |PARTITIONED|
-                                    replicate
-                                    -- REPLICATE  |UNPARTITIONED|
-                                      exchange
-                                      -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
-                                        aggregate [$$58] <- [agg-global-union_mbr($$57)]
-                                        -- AGGREGATE  |UNPARTITIONED|
-                                          exchange
-                                          -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
-                                            union ($$54, $$56, $$57)
-                                            -- UNION_ALL  |UNPARTITIONED|
-                                              exchange
-                                              -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
-                                                aggregate [$$54] <- [agg-global-union_mbr($$53)]
-                                                -- AGGREGATE  |UNPARTITIONED|
-                                                  exchange
-                                                  -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
-                                                    aggregate [$$53] <- [agg-local-union_mbr($$49)]
-                                                    -- AGGREGATE  |PARTITIONED|
-                                                      exchange
-                                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                        replicate
-                                                        -- REPLICATE  |PARTITIONED|
-                                                          exchange
-                                                          -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                            project ([$$49])
-                                                            -- STREAM_PROJECT  |PARTITIONED|
-                                                              assign [$$49] <- [$$ps.getField(1)]
-                                                              -- ASSIGN  |PARTITIONED|
-                                                                project ([$$ps])
-                                                                -- STREAM_PROJECT  |PARTITIONED|
-                                                                  exchange
-                                                                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                                    data-scan []<-[$$47, $$ps] <- test.ParkSet
-                                                                    -- DATASOURCE_SCAN  |PARTITIONED|
-                                                                      exchange
-                                                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                                        empty-tuple-source
-                                                                        -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
-                                              exchange
-                                              -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
-                                                aggregate [$$56] <- [agg-global-union_mbr($$55)]
-                                                -- AGGREGATE  |UNPARTITIONED|
-                                                  exchange
-                                                  -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
-                                                    aggregate [$$55] <- [agg-local-union_mbr($$50)]
-                                                    -- AGGREGATE  |PARTITIONED|
-                                                      exchange
-                                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                        replicate
-                                                        -- REPLICATE  |PARTITIONED|
-                                                          exchange
-                                                          -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                            project ([$$50])
-                                                            -- STREAM_PROJECT  |PARTITIONED|
-                                                              assign [$$50] <- [$$ls.getField(1)]
-                                                              -- ASSIGN  |PARTITIONED|
-                                                                project ([$$ls])
-                                                                -- STREAM_PROJECT  |PARTITIONED|
-                                                                  exchange
-                                                                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                                    data-scan []<-[$$48, $$ls] <- test.LakeSet
-                                                                    -- DATASOURCE_SCAN  |PARTITIONED|
-                                                                      exchange
-                                                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                                        empty-tuple-source
-                                                                        -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
-                    exchange
-                    -- ONE_TO_ONE_EXCHANGE  |LOCAL|
-                      order (ASC, $$62) (ASC, $$50)
-                      -- STABLE_SORT [$$62(ASC), $$50(ASC)]  |LOCAL|
-                        exchange
-                        -- HASH_PARTITION_EXCHANGE [$$62]  |PARTITIONED|
-                          unnest $$62 <- spatial-tile($$50, $$60, 50, 50)
-                          -- UNNEST  |PARTITIONED|
-                            assign [$$60] <- [spatial-attach($$50, "cf673e19-00a9-4558-a855-6bfcb53ce779")]
-                            -- ASSIGN  |PARTITIONED|
-                              exchange
-                              -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                forward: shared-variable = $$58
-                                -- FORWARD  |PARTITIONED|
-                                  exchange
-                                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                    replicate
-                                    -- REPLICATE  |PARTITIONED|
-                                      exchange
-                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                        project ([$$50])
-                                        -- STREAM_PROJECT  |PARTITIONED|
-                                          assign [$$50] <- [$$ls.getField(1)]
-                                          -- ASSIGN  |PARTITIONED|
-                                            project ([$$ls])
-                                            -- STREAM_PROJECT  |PARTITIONED|
-                                              exchange
-                                              -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                data-scan []<-[$$48, $$ls] <- test.LakeSet
-                                                -- DATASOURCE_SCAN  |PARTITIONED|
-                                                  exchange
-                                                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                    empty-tuple-source
-                                                    -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
-                                  exchange
-                                  -- BROADCAST_EXCHANGE  |PARTITIONED|
-                                    replicate
-                                    -- REPLICATE  |UNPARTITIONED|
-                                      exchange
-                                      -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
-                                        aggregate [$$58] <- [agg-global-union_mbr($$57)]
-                                        -- AGGREGATE  |UNPARTITIONED|
-                                          exchange
-                                          -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
-                                            union ($$54, $$56, $$57)
-                                            -- UNION_ALL  |UNPARTITIONED|
-                                              exchange
-                                              -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
-                                                aggregate [$$54] <- [agg-global-union_mbr($$53)]
-                                                -- AGGREGATE  |UNPARTITIONED|
-                                                  exchange
-                                                  -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
-                                                    aggregate [$$53] <- [agg-local-union_mbr($$49)]
-                                                    -- AGGREGATE  |PARTITIONED|
-                                                      exchange
-                                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                        replicate
-                                                        -- REPLICATE  |PARTITIONED|
-                                                          exchange
-                                                          -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                            project ([$$49])
-                                                            -- STREAM_PROJECT  |PARTITIONED|
-                                                              assign [$$49] <- [$$ps.getField(1)]
-                                                              -- ASSIGN  |PARTITIONED|
-                                                                project ([$$ps])
-                                                                -- STREAM_PROJECT  |PARTITIONED|
-                                                                  exchange
-                                                                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                                    data-scan []<-[$$47, $$ps] <- test.ParkSet
-                                                                    -- DATASOURCE_SCAN  |PARTITIONED|
-                                                                      exchange
-                                                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                                        empty-tuple-source
-                                                                        -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
-                                              exchange
-                                              -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
-                                                aggregate [$$56] <- [agg-global-union_mbr($$55)]
-                                                -- AGGREGATE  |UNPARTITIONED|
-                                                  exchange
-                                                  -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
-                                                    aggregate [$$55] <- [agg-local-union_mbr($$50)]
-                                                    -- AGGREGATE  |PARTITIONED|
-                                                      exchange
-                                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                        replicate
-                                                        -- REPLICATE  |PARTITIONED|
-                                                          exchange
-                                                          -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                            project ([$$50])
-                                                            -- STREAM_PROJECT  |PARTITIONED|
-                                                              assign [$$50] <- [$$ls.getField(1)]
-                                                              -- ASSIGN  |PARTITIONED|
-                                                                project ([$$ls])
-                                                                -- STREAM_PROJECT  |PARTITIONED|
-                                                                  exchange
-                                                                  -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                                    data-scan []<-[$$48, $$ls] <- test.LakeSet
-                                                                    -- DATASOURCE_SCAN  |PARTITIONED|
-                                                                      exchange
-                                                                      -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
-                                                                        empty-tuple-source
-                                                                        -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
+          exchange
+          -- RANDOM_MERGE_EXCHANGE  |LOCAL|
+            aggregate [$$52] <- [agg-sql-count(1)]
+            -- AGGREGATE  |LOCAL|
+              select (eq($$61, reference-tile($$49, $$50, $$59, $$60, 50, 50)))
+              -- STREAM_SELECT  |LOCAL|
+                project ([$$49, $$59, $$61, $$50, $$60])
+                -- STREAM_PROJECT  |LOCAL|
+                  exchange
+                  -- ONE_TO_ONE_EXCHANGE  |LOCAL|
+                    join (eq($$61, $$62))
+                    -- SPATIAL_JOIN [$$61, $$49, $$59] [$$62, $$50, $$60]  |LOCAL|
+                      exchange
+                      -- ONE_TO_ONE_EXCHANGE  |LOCAL|
+                        order (ASC, $$61) (ASC, $$49)
+                        -- STABLE_SORT [$$61(ASC), $$49(ASC)]  |LOCAL|
+                          exchange
+                          -- HASH_PARTITION_EXCHANGE [$$61]  |PARTITIONED|
+                            unnest $$61 <- spatial-tile($$49, $$59, 50, 50)
+                            -- UNNEST  |PARTITIONED|
+                              assign [$$59] <- [spatial-attach($$49, "0fdbaabd-e566-4e14-abb7-163297a0edf1")]
+                              -- ASSIGN  |PARTITIONED|
+                                exchange
+                                -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                  forward: shared-variable = $$58
+                                  -- FORWARD  |PARTITIONED|
+                                    exchange
+                                    -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                      replicate
+                                      -- REPLICATE  |PARTITIONED|
+                                        exchange
+                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                          project ([$$49])
+                                          -- STREAM_PROJECT  |PARTITIONED|
+                                            assign [$$49] <- [$$ps.getField(1)]
+                                            -- ASSIGN  |PARTITIONED|
+                                              project ([$$ps])
+                                              -- STREAM_PROJECT  |PARTITIONED|
+                                                exchange
+                                                -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                  data-scan []<-[$$47, $$ps] <- test.ParkSet
+                                                  -- DATASOURCE_SCAN  |PARTITIONED|
+                                                    exchange
+                                                    -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                      empty-tuple-source
+                                                      -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
+                                    exchange
+                                    -- BROADCAST_EXCHANGE  |PARTITIONED|
+                                      replicate
+                                      -- REPLICATE  |UNPARTITIONED|
+                                        exchange
+                                        -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+                                          aggregate [$$58] <- [agg-global-union_mbr($$57)]
+                                          -- AGGREGATE  |UNPARTITIONED|
+                                            exchange
+                                            -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+                                              union ($$54, $$56, $$57)
+                                              -- UNION_ALL  |UNPARTITIONED|
+                                                exchange
+                                                -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+                                                  aggregate [$$54] <- [agg-global-union_mbr($$53)]
+                                                  -- AGGREGATE  |UNPARTITIONED|
+                                                    exchange
+                                                    -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
+                                                      aggregate [$$53] <- [agg-local-union_mbr($$49)]
+                                                      -- AGGREGATE  |PARTITIONED|
+                                                        exchange
+                                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                          replicate
+                                                          -- REPLICATE  |PARTITIONED|
+                                                            exchange
+                                                            -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                              project ([$$49])
+                                                              -- STREAM_PROJECT  |PARTITIONED|
+                                                                assign [$$49] <- [$$ps.getField(1)]
+                                                                -- ASSIGN  |PARTITIONED|
+                                                                  project ([$$ps])
+                                                                  -- STREAM_PROJECT  |PARTITIONED|
+                                                                    exchange
+                                                                    -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                                      data-scan []<-[$$47, $$ps] <- test.ParkSet
+                                                                      -- DATASOURCE_SCAN  |PARTITIONED|
+                                                                        exchange
+                                                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                                          empty-tuple-source
+                                                                          -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
+                                                exchange
+                                                -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+                                                  aggregate [$$56] <- [agg-global-union_mbr($$55)]
+                                                  -- AGGREGATE  |UNPARTITIONED|
+                                                    exchange
+                                                    -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
+                                                      aggregate [$$55] <- [agg-local-union_mbr($$50)]
+                                                      -- AGGREGATE  |PARTITIONED|
+                                                        exchange
+                                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                          replicate
+                                                          -- REPLICATE  |PARTITIONED|
+                                                            exchange
+                                                            -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                              project ([$$50])
+                                                              -- STREAM_PROJECT  |PARTITIONED|
+                                                                assign [$$50] <- [$$ls.getField(1)]
+                                                                -- ASSIGN  |PARTITIONED|
+                                                                  project ([$$ls])
+                                                                  -- STREAM_PROJECT  |PARTITIONED|
+                                                                    exchange
+                                                                    -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                                      data-scan []<-[$$48, $$ls] <- test.LakeSet
+                                                                      -- DATASOURCE_SCAN  |PARTITIONED|
+                                                                        exchange
+                                                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                                          empty-tuple-source
+                                                                          -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
+                      exchange
+                      -- ONE_TO_ONE_EXCHANGE  |LOCAL|
+                        order (ASC, $$62) (ASC, $$50)
+                        -- STABLE_SORT [$$62(ASC), $$50(ASC)]  |LOCAL|
+                          exchange
+                          -- HASH_PARTITION_EXCHANGE [$$62]  |PARTITIONED|
+                            unnest $$62 <- spatial-tile($$50, $$60, 50, 50)
+                            -- UNNEST  |PARTITIONED|
+                              assign [$$60] <- [spatial-attach($$50, "f971cf2f-4eb5-4036-804a-5b9877f725ed")]
+                              -- ASSIGN  |PARTITIONED|
+                                exchange
+                                -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                  forward: shared-variable = $$58
+                                  -- FORWARD  |PARTITIONED|
+                                    exchange
+                                    -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                      replicate
+                                      -- REPLICATE  |PARTITIONED|
+                                        exchange
+                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                          project ([$$50])
+                                          -- STREAM_PROJECT  |PARTITIONED|
+                                            assign [$$50] <- [$$ls.getField(1)]
+                                            -- ASSIGN  |PARTITIONED|
+                                              project ([$$ls])
+                                              -- STREAM_PROJECT  |PARTITIONED|
+                                                exchange
+                                                -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                  data-scan []<-[$$48, $$ls] <- test.LakeSet
+                                                  -- DATASOURCE_SCAN  |PARTITIONED|
+                                                    exchange
+                                                    -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                      empty-tuple-source
+                                                      -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
+                                    exchange
+                                    -- BROADCAST_EXCHANGE  |PARTITIONED|
+                                      replicate
+                                      -- REPLICATE  |UNPARTITIONED|
+                                        exchange
+                                        -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+                                          aggregate [$$58] <- [agg-global-union_mbr($$57)]
+                                          -- AGGREGATE  |UNPARTITIONED|
+                                            exchange
+                                            -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+                                              union ($$54, $$56, $$57)
+                                              -- UNION_ALL  |UNPARTITIONED|
+                                                exchange
+                                                -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+                                                  aggregate [$$54] <- [agg-global-union_mbr($$53)]
+                                                  -- AGGREGATE  |UNPARTITIONED|
+                                                    exchange
+                                                    -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
+                                                      aggregate [$$53] <- [agg-local-union_mbr($$49)]
+                                                      -- AGGREGATE  |PARTITIONED|
+                                                        exchange
+                                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                          replicate
+                                                          -- REPLICATE  |PARTITIONED|
+                                                            exchange
+                                                            -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                              project ([$$49])
+                                                              -- STREAM_PROJECT  |PARTITIONED|
+                                                                assign [$$49] <- [$$ps.getField(1)]
+                                                                -- ASSIGN  |PARTITIONED|
+                                                                  project ([$$ps])
+                                                                  -- STREAM_PROJECT  |PARTITIONED|
+                                                                    exchange
+                                                                    -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                                      data-scan []<-[$$47, $$ps] <- test.ParkSet
+                                                                      -- DATASOURCE_SCAN  |PARTITIONED|
+                                                                        exchange
+                                                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                                          empty-tuple-source
+                                                                          -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
+                                                exchange
+                                                -- ONE_TO_ONE_EXCHANGE  |UNPARTITIONED|
+                                                  aggregate [$$56] <- [agg-global-union_mbr($$55)]
+                                                  -- AGGREGATE  |UNPARTITIONED|
+                                                    exchange
+                                                    -- RANDOM_MERGE_EXCHANGE  |PARTITIONED|
+                                                      aggregate [$$55] <- [agg-local-union_mbr($$50)]
+                                                      -- AGGREGATE  |PARTITIONED|
+                                                        exchange
+                                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                          replicate
+                                                          -- REPLICATE  |PARTITIONED|
+                                                            exchange
+                                                            -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                              project ([$$50])
+                                                              -- STREAM_PROJECT  |PARTITIONED|
+                                                                assign [$$50] <- [$$ls.getField(1)]
+                                                                -- ASSIGN  |PARTITIONED|
+                                                                  project ([$$ls])
+                                                                  -- STREAM_PROJECT  |PARTITIONED|
+                                                                    exchange
+                                                                    -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                                      data-scan []<-[$$48, $$ls] <- test.LakeSet
+                                                                      -- DATASOURCE_SCAN  |PARTITIONED|
+                                                                        exchange
+                                                                        -- ONE_TO_ONE_EXCHANGE  |PARTITIONED|
+                                                                          empty-tuple-source
+                                                                          -- EMPTY_TUPLE_SOURCE  |PARTITIONED|
