@@ -1,0 +1,645 @@
+{
+  "operators" : [ {
+    "id" : "ODID:0",
+    "java-class" : "org.apache.hyracks.storage.am.btree.dataflow.BTreeSearchOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.storage.am.btree.dataflow.BTreeSearchOperatorDescriptor[ODID:0]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "3" : "asterix_nc2",
+        "1" : "asterix_nc1",
+        "0" : "asterix_nc1",
+        "2" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:1",
+    "java-class" : "org.apache.hyracks.dataflow.std.misc.ReplicateOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 2,
+    "display-name" : "org.apache.hyracks.dataflow.std.misc.ReplicateOperatorDescriptor[ODID:1]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "3" : "asterix_nc2",
+        "2" : "asterix_nc2",
+        "1" : "asterix_nc1",
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:2",
+    "java-class" : "org.apache.hyracks.storage.am.btree.dataflow.BTreeSearchOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.storage.am.btree.dataflow.BTreeSearchOperatorDescriptor[ODID:2]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "2" : "asterix_nc2",
+        "3" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "1" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:3",
+    "java-class" : "org.apache.hyracks.dataflow.std.misc.ReplicateOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 2,
+    "display-name" : "org.apache.hyracks.dataflow.std.misc.ReplicateOperatorDescriptor[ODID:3]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "2" : "asterix_nc2",
+        "1" : "asterix_nc1",
+        "3" : "asterix_nc2",
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:4",
+    "java-class" : "org.apache.hyracks.dataflow.std.union.UnionAllOperatorDescriptor",
+    "in-arity" : 2,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.dataflow.std.union.UnionAllOperatorDescriptor[ODID:4]",
+    "partition-constraints" : {
+      "count" : "1",
+      "location" : {
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:5",
+    "java-class" : "org.apache.hyracks.dataflow.std.misc.ReplicateOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 2,
+    "display-name" : "org.apache.hyracks.dataflow.std.misc.ReplicateOperatorDescriptor[ODID:5]",
+    "partition-constraints" : {
+      "count" : "1",
+      "location" : {
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:6",
+    "java-class" : "org.apache.hyracks.dataflow.std.misc.SpatialForwardOperatorDescriptor",
+    "in-arity" : 2,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.dataflow.std.misc.SpatialForwardOperatorDescriptor[ODID:6]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "3" : "asterix_nc2",
+        "2" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "1" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:7",
+    "java-class" : "org.apache.hyracks.dataflow.std.sort.ExternalSortOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.dataflow.std.sort.ExternalSortOperatorDescriptor[ODID:7]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "2" : "asterix_nc2",
+        "1" : "asterix_nc1",
+        "3" : "asterix_nc2",
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:8",
+    "java-class" : "org.apache.hyracks.dataflow.std.misc.SpatialForwardOperatorDescriptor",
+    "in-arity" : 2,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.dataflow.std.misc.SpatialForwardOperatorDescriptor[ODID:8]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "3" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "1" : "asterix_nc1",
+        "2" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:9",
+    "java-class" : "org.apache.hyracks.dataflow.std.sort.ExternalSortOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.dataflow.std.sort.ExternalSortOperatorDescriptor[ODID:9]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "1" : "asterix_nc1",
+        "2" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "3" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:10",
+    "java-class" : "org.apache.asterix.runtime.operators.joins.spatial.PlaneSweepJoinOperatorDescriptor",
+    "in-arity" : 2,
+    "out-arity" : 1,
+    "display-name" : "org.apache.asterix.runtime.operators.joins.spatial.PlaneSweepJoinOperatorDescriptor[ODID:10]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "3" : "asterix_nc2",
+        "1" : "asterix_nc1",
+        "0" : "asterix_nc1",
+        "2" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:11",
+    "java-class" : "org.apache.hyracks.dataflow.std.result.ResultWriterOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 0,
+    "display-name" : "org.apache.hyracks.dataflow.std.result.ResultWriterOperatorDescriptor[ODID:11]",
+    "partition-constraints" : {
+      "count" : "1",
+      "location" : {
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:12",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:12]",
+    "micro-operators" : "[assign [1] := [org.apache.asterix.runtime.unnestingfunctions.std.SpatialAttachDescriptor$2@7fcbab7], unnest 2 <- org.apache.asterix.runtime.unnestingfunctions.std.SpatialTileDescriptor$2@629506f6]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "2" : "asterix_nc2",
+        "1" : "asterix_nc1",
+        "3" : "asterix_nc2",
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:13",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:13]",
+    "micro-operators" : "[assign [1] := [org.apache.asterix.runtime.unnestingfunctions.std.SpatialAttachDescriptor$2@78f10164], unnest 2 <- org.apache.asterix.runtime.unnestingfunctions.std.SpatialTileDescriptor$2@79844c5]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "1" : "asterix_nc1",
+        "3" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "2" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:14",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:14]",
+    "micro-operators" : "[assign [org.apache.asterix.runtime.aggregates.std.LocalUnionMbrAggregateDescriptor$1@65d37f83]]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "1" : "asterix_nc1",
+        "2" : "asterix_nc2",
+        "3" : "asterix_nc2",
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:15",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:15]",
+    "micro-operators" : "[assign [org.apache.asterix.runtime.aggregates.std.GlobalUnionMbrAggregateDescriptor$1@2fbb7779]]",
+    "partition-constraints" : {
+      "count" : "1",
+      "location" : {
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:16",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:16]",
+    "micro-operators" : "[stream-project [1], assign [1] := [org.apache.asterix.runtime.evaluators.functions.records.FieldAccessByIndexEvalFactory@5fb1a9cb], stream-project [1]]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "3" : "asterix_nc2",
+        "2" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "1" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:17",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:17]",
+    "micro-operators" : "[assign [org.apache.asterix.runtime.aggregates.std.LocalUnionMbrAggregateDescriptor$1@1a4a6094]]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "1" : "asterix_nc1",
+        "0" : "asterix_nc1",
+        "2" : "asterix_nc2",
+        "3" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:18",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:18]",
+    "micro-operators" : "[assign [org.apache.asterix.runtime.aggregates.std.SqlSumAggregateDescriptor$2@641b3b39], assign [1] := [org.apache.asterix.runtime.evaluators.common.ClosedRecordConstructorEvalFactory@10ef987c], stream-project [1]]",
+    "partition-constraints" : {
+      "count" : "1",
+      "location" : {
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:19",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:19]",
+    "micro-operators" : "[stream-project [0, 1, 2, 3, 4], stream-select org.apache.asterix.runtime.evaluators.comparisons.EqualsDescriptor$2@4242945b, assign [org.apache.asterix.runtime.aggregates.std.SqlCountAggregateDescriptor$2@bc51247]]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "2" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "1" : "asterix_nc1",
+        "3" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:20",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:20]",
+    "micro-operators" : "[stream-project [1], assign [1] := [org.apache.asterix.runtime.evaluators.functions.records.FieldAccessByIndexEvalFactory@363a32f5], stream-project [1]]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "1" : "asterix_nc1",
+        "3" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "2" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:21",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 0,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:21]",
+    "micro-operators" : "[ets]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "2" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "1" : "asterix_nc1",
+        "3" : "asterix_nc2"
+      }
+    }
+  }, {
+    "id" : "ODID:22",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 0,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:22]",
+    "micro-operators" : "[ets]",
+    "partition-constraints" : {
+      "count" : "4",
+      "location" : {
+        "3" : "asterix_nc2",
+        "2" : "asterix_nc2",
+        "0" : "asterix_nc1",
+        "1" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:23",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:23]",
+    "micro-operators" : "[assign [org.apache.asterix.runtime.aggregates.std.GlobalUnionMbrAggregateDescriptor$1@5a7a7036]]",
+    "partition-constraints" : {
+      "count" : "1",
+      "location" : {
+        "0" : "asterix_nc1"
+      }
+    }
+  }, {
+    "id" : "ODID:24",
+    "java-class" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor",
+    "in-arity" : 1,
+    "out-arity" : 1,
+    "display-name" : "org.apache.hyracks.algebricks.runtime.operators.meta.AlgebricksMetaOperatorDescriptor[ODID:24]",
+    "micro-operators" : "[assign [org.apache.asterix.runtime.aggregates.std.GlobalUnionMbrAggregateDescriptor$1@cccc76e]]",
+    "partition-constraints" : {
+      "count" : "1",
+      "location" : {
+        "0" : "asterix_nc1"
+      }
+    }
+  } ],
+  "connectors" : [ {
+    "in-operator-id" : "ODID:21",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:0",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:0",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:0]"
+    }
+  }, {
+    "in-operator-id" : "ODID:0",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:16",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:1",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:1]"
+    }
+  }, {
+    "in-operator-id" : "ODID:16",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:1",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:2",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:2]"
+    }
+  }, {
+    "in-operator-id" : "ODID:1",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:6",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:3",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:3]"
+    }
+  }, {
+    "in-operator-id" : "ODID:1",
+    "in-operator-port" : 1,
+    "out-operator-id" : "ODID:14",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:4",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:4]"
+    }
+  }, {
+    "in-operator-id" : "ODID:14",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:23",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:5",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor[CDID:5]"
+    }
+  }, {
+    "in-operator-id" : "ODID:23",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:4",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:6",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:6]"
+    }
+  }, {
+    "in-operator-id" : "ODID:22",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:2",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:7",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:7]"
+    }
+  }, {
+    "in-operator-id" : "ODID:2",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:20",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:8",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:8]"
+    }
+  }, {
+    "in-operator-id" : "ODID:20",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:3",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:9",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:9]"
+    }
+  }, {
+    "in-operator-id" : "ODID:3",
+    "in-operator-port" : 1,
+    "out-operator-id" : "ODID:17",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:10",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:10]"
+    }
+  }, {
+    "in-operator-id" : "ODID:17",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:24",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:11",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor[CDID:11]"
+    }
+  }, {
+    "in-operator-id" : "ODID:24",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:4",
+    "out-operator-port" : 1,
+    "connector" : {
+      "id" : "CDID:12",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:12]"
+    }
+  }, {
+    "in-operator-id" : "ODID:4",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:15",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:13",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:13]"
+    }
+  }, {
+    "in-operator-id" : "ODID:15",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:5",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:14",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:14]"
+    }
+  }, {
+    "in-operator-id" : "ODID:5",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:6",
+    "out-operator-port" : 1,
+    "connector" : {
+      "id" : "CDID:15",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor[CDID:15]"
+    }
+  }, {
+    "in-operator-id" : "ODID:6",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:12",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:16",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:16]"
+    }
+  }, {
+    "in-operator-id" : "ODID:12",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:7",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:17",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.MToNPartitioningConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.MToNPartitioningConnectorDescriptor[CDID:17]"
+    }
+  }, {
+    "in-operator-id" : "ODID:7",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:10",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:18",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:18]"
+    }
+  }, {
+    "in-operator-id" : "ODID:3",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:8",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:19",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:19]"
+    }
+  }, {
+    "in-operator-id" : "ODID:5",
+    "in-operator-port" : 1,
+    "out-operator-id" : "ODID:8",
+    "out-operator-port" : 1,
+    "connector" : {
+      "id" : "CDID:20",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor[CDID:20]"
+    }
+  }, {
+    "in-operator-id" : "ODID:8",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:13",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:21",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:21]"
+    }
+  }, {
+    "in-operator-id" : "ODID:13",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:9",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:22",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.MToNPartitioningConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.MToNPartitioningConnectorDescriptor[CDID:22]"
+    }
+  }, {
+    "in-operator-id" : "ODID:9",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:10",
+    "out-operator-port" : 1,
+    "connector" : {
+      "id" : "CDID:23",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:23]"
+    }
+  }, {
+    "in-operator-id" : "ODID:10",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:19",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:24",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:24]"
+    }
+  }, {
+    "in-operator-id" : "ODID:19",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:18",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:25",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.MToNBroadcastConnectorDescriptor[CDID:25]"
+    }
+  }, {
+    "in-operator-id" : "ODID:18",
+    "in-operator-port" : 0,
+    "out-operator-id" : "ODID:11",
+    "out-operator-port" : 0,
+    "connector" : {
+      "id" : "CDID:26",
+      "java-class" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor",
+      "display-name" : "org.apache.hyracks.dataflow.std.connectors.OneToOneConnectorDescriptor[CDID:26]"
+    }
+  } ],
+  "required-capacity" : {
+    "memory" : 7634944,
+    "cores" : 4
+  }
+}
